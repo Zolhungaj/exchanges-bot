@@ -1,4 +1,4 @@
-const client = require('../services/discord-client');
+import { client } from '../services/discord-client';
 const { registerCommands } = require('../utilities/register-commands');
 
 client.login()

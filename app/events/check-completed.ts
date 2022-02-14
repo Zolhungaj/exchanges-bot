@@ -1,10 +1,12 @@
+import {Message} from "discord.js";
+
 const { isBotThread } = require('../common/channels');
 const { matchLines, updateMatchedLine, updateListTitle } = require('../common/munge');
 const { DiscordEvent } = require('../models/events');
 /** @typedef {import('discord.js').Message} Message */
 
 /** @param {Message} message */
-const updatePins = async message => {
+const updatePins = async (message : Message) => {
 	if (!isBotThread(message)) return;
 
 	const matches =  matchLines(message.content);
@@ -17,7 +19,7 @@ const updatePins = async message => {
 				if (updatedContents) await pin.edit(
 					updateListTitle(updatedContents, match.group))
 					.then(edited => pin = edited)
-					.then(() => console.log(`New completion in ${pin.guild.name} by ${message.member.user.tag}`));
+					.then(() => console.log(`New completion in ${pin.guild?.name} by ${message.member?.user.tag}`));
 			}
 		})));
 };

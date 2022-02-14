@@ -1,4 +1,5 @@
-const { Intents } = require('discord.js');
+import {Intents} from "discord.js";
+
 if (process.env.NODE_ENV != 'production') require('dotenv').config();
 
 module.exports = {
